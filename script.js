@@ -8,6 +8,17 @@
         d3.csv("national.csv"),
         d3.csv("yearly_goals.csv")
 
-    ])
+    ]).then(([rawDataOverall, rawDataLaLiga, rawDataNational, rawDataYearlyGoals]) => {
+        const dataOverall = processData(rawDataOverall);
+        const dataLaLiga = processData(rawDataLaLiga);
+        const dataNational = processData(rawDataNational);
+        const dataYearlyGoals = rawDataYearlyGoals.map(d => ({
+            year: +d.Year,
+            MessiGoals: +d.MessiGoals,
+            RonaldoGoals: +d.RonaldoGoals
+        }));
+    
+        
+    });
 
     })();
