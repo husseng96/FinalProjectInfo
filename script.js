@@ -8,6 +8,6 @@
         d3.csv("national.csv"),
         d3.csv("yearly_goals.csv")
 
-    ])
+        ])
 
     })();
