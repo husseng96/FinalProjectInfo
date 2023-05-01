@@ -123,7 +123,46 @@
         .style("font-weight", "bold")
         .style("fill", (d, i) => i === 0 ? "steelblue" : "orange");
 
-
+    };
+    const createLineChart = (data, chartID) => {
+        const margin = { top: 50, right: 20, bottom: 50, left: 50 };
+        const width = 960 - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
+    
+        const x = d3.scaleLinear()
+            .domain(d3.extent(data, d => d.year))
+            .range([0, width]);
+    
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => Math.max(d.MessiGoals, d.RonaldoGoals))]).nice()
+            .range([height, 0]);
+    
+        const line = d3.line()
+            .x(d => x(d.year))
+            .y(d => y(d.MessiGoals));
+    
+        const line2 = d3.line()
+            .x(d => x(d.year))
+            .y(d => y(d.RonaldoGoals));
+    
+    
+        const svg = d3.select(chartID)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0)
+            .style("position", "absolute")
+            .style("background-color", "#f9f9f9")
+            .style("color", "#333")
+            .style("border", "1px solid #ccc")
+            .style("border-radius", "5px")
+            .style("padding", "5px");
+    
     };
 
     })();
