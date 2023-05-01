@@ -240,4 +240,16 @@
         return processedData;
     };
 
+    ScrollOut({
+        targets: ".chart-container > div:first-child",
+        onShown: function (el) {
+            el.classList.add("sticky");
+            el.classList.remove("inactive");
+        },
+        onHidden: function (el) {
+            el.classList.remove("sticky");
+            el.classList.add("inactive");
+        },
+    });
+
 })();
