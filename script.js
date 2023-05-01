@@ -18,7 +18,11 @@
             RonaldoGoals: +d.RonaldoGoals
         }));
     
-        
+        console.log(dataYearlyGoals);
+        createBarChart(dataOverall, "#chartOverall");
+        createBarChart(dataLaLiga, "#chartLaLiga");
+        createBarChart(dataNational, "#chartNational");
+        createLineChart(dataYearlyGoals, "#chartYearlyGoals");
     });
 
     })();
