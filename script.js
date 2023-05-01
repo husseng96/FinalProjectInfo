@@ -8,9 +8,6 @@
         d3.csv("national.csv"),
         d3.csv("yearly_goals.csv")
 
-<<<<<<< HEAD
-        ])
-=======
     ]).then(([rawDataOverall, rawDataLaLiga, rawDataNational, rawDataYearlyGoals]) => {
         const dataOverall = processData(rawDataOverall);
         const dataLaLiga = processData(rawDataLaLiga);
@@ -27,6 +24,7 @@
         createBarChart(dataNational, "#chartNational");
         createLineChart(dataYearlyGoals, "#chartYearlyGoals");
     });
->>>>>>> 4b826af5a52011461d99b252bf41b806fc41c258
+
+    
 
     })();
