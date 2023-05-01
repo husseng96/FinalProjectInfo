@@ -162,7 +162,74 @@
             .style("border", "1px solid #ccc")
             .style("border-radius", "5px")
             .style("padding", "5px");
-    
-    };
+        // Add circles to the lines for Messi and Ronaldo
+    const circleData = data.flatMap(d => [
+        { ...d, key: "Messi", value: d.MessiGoals },
+        { ...d, key: "Ronaldo", value: d.RonaldoGoals }
+    ]);
 
-    })();
+    svg.selectAll(".circle")
+        .data(circleData)
+        .enter()
+        .append("circle")
+        .attr("class", "circle")
+        .attr("cx", d => x(d.year))
+        .attr("cy", d => y(d.value))
+        .attr("r", 4)
+        .style("fill", d => d.key === "Messi" ? "steelblue" : "orange")
+        .style("stroke", "white")
+        .style("stroke-width", "1px")
+        .on("mouseover", (event, d) => {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html(d.key + " (" + d.year + "): " + d.value)
+                .style("left", (event.pageX + 5) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", () => {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", line);
+
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "orange")
+        .attr("stroke-width", 1.5)
+        .attr("d", line2);
+
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+    // Add legend
+    svg.append("text")
+        .attr("x", width - 150)
+        .attr("y", 30)
+        .text("Messi")
+        .style("font-weight", "bold")
+        .style("fill", "steelblue");
+
+    svg.append("text")
+        .attr("x", width - 150)
+        .attr("y", 50)
+        .text("Ronaldo")
+        .style("font-weight", "bold")
+        .style("fill", "orange");
+
+    };
+    
+    
+
+})();
