@@ -25,6 +25,31 @@
         createLineChart(dataYearlyGoals, "#chartYearlyGoals");
     });
 
+    const createBarChart = (data, chartID) => {
+        const margin = { top: 50, right: 20, bottom: 100, left: 40 };
+        const width = 960 - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
     
+        const x0 = d3.scaleBand()
+            .rangeRound([0, width])
+            .paddingInner(0.1);
+    
+        const x1 = d3.scaleBand()
+            .padding(0.05);
+    
+        const y = d3.scaleLinear()
+            .rangeRound([height, 0]);
+    
+        const xAxis = d3.axisBottom(x0);
+        const yAxis = d3.axisLeft(y).ticks(null, "s");
+    
+        function abbreviateLabel(label) {
+            if (label.length > 10) {
+                return label.substring(0, 10) + '...';
+            } else {
+                return label;
+            }
+        }
+    };
 
     })();
