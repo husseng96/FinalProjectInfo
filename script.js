@@ -230,6 +230,14 @@
 
     };
     
-    
+    const processData = rawData => {
+        const processedData = rawData.map(d => ({
+            category: d.Category,
+            Messi: +d.Messi,
+            Ronaldo: +d.Ronaldo
+            //Ronaldo: +d[" Ronaldo"]
+        }));
+        return processedData;
+    };
 
 })();
