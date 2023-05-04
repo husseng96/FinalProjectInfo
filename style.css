@@ -46,13 +46,10 @@ h2 {
     max-width: 300px;
 }
 
-.chart-title {
-    font-size: 24px;
-    font-weight: bold;
-}
 
 .chart-description {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .chart-info-container {
