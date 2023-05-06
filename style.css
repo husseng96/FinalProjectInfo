@@ -1,7 +1,7 @@
 body {
     font-family: 'DM Sans', sans-serif;
-    background-color:tan;
-        color: black;
+    background-color:purple;
+        color: white;
 }
 h1 {
     font-family: 'Noto Sans', sans-serif;
@@ -20,7 +20,7 @@ h2 {
     padding: 10px;
     color: lime;
 }
-.imge {
+.img {
     display: block;
     margin: 0 auto;
   }
@@ -74,7 +74,7 @@ h2 {
 }
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: tan;
-        color: black;
+        background-color:purple;
+        color: white;
     }
 }
